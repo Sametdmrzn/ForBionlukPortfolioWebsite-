@@ -1,0 +1,136 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    background-color: #008080;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-logo {
+    height: 150px;
+    width: 300px;
+    margin-right: 20px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 15px;
+    transition: background-color 0.3s;
+    padding-right: 50px;
+}
+
+nav a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.hero {
+    background-image: url('https://via.placeholder.com/1200x400');
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3em;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.container {
+    padding: 20px;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.product-card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.product-card img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+.product-card h3 {
+    margin: 10px 0;
+}
+
+.product-card p {
+    color: #666;
+}
+
+/* Fotoğraf banner alanı */
+.photo-banner {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    padding: 20px 0;
+    background-color: #f0f0f0;
+}
+
+/* Fotoğraf öğelerinin konteyneri */
+.photo-items {
+    display: flex;
+    animation: slide 30s linear infinite; /* Kayma animasyonu */
+}
+
+/* Tekil fotoğraf öğesi */
+.photo-item {
+    flex: 0 0 150px; /* Fotoğrafların başlangıç genişliği */
+    height: 300px;
+    transition: flex 0.3s ease; /* Kutu genişlemesi animasyonu */
+    overflow: hidden;
+}
+
+/* Fotoğrafın kutuya sığması */
+.photo-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Hover efektiyle kutu genişletme */
+.photo-item:hover {
+    flex: 0 0 300px; /* Kutu genişliği artar */
+}
+
+/* Kayma animasyonu */
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* Animasyonu durdurma */
+.photo-banner.paused .photo-items {
+    animation-play-state: paused;
+}
