@@ -4,6 +4,33 @@ body {
     padding: 0;
 }
 
+h2 {
+    font-family: 'Roboto', sans-serif; /* Modern ve sade bir yazı tipi */
+    font-weight: 300; /* İnce ve hafif görünüm */
+    font-size: 24px; /* Boyutu çok abartmadan */
+    color: #333;
+    position: relative;
+    display: inline-block;
+    margin-bottom: 20px;
+    text-transform: uppercase; /* Daha modern bir hava için büyük harf kullanımı */
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color: #008080; /* Çizginin rengi */
+    margin-top: 5px;
+    transition: width 0.4s ease;
+}
+
+h2:hover::after {
+    width: 100%; /* Fare ile üzerine gelindiğinde çizginin yatayda uzaması */
+}
+
+
+
 nav {
     background-color: #008080;
     padding: 10px 20px;
@@ -15,43 +42,26 @@ nav {
 .nav-logo {
     height: 150px;
     width: 300px;
-    margin-right: 20px; /* Logo ile menü öğeleri arasındaki boşluğu ayarlar */
+    margin-right: 20px;
 }
 
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 10px; /* Menü öğeleri arasındaki boşluğu ayarlar */
+    gap: 10px;
 }
 
 nav a {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    padding: 10px 15px; /* Menü öğelerinin iç boşluklarını ayarlar */
+    padding: 10px 15px;
     transition: background-color 0.3s;
     padding-right: 50px;
 }
 
 nav a:hover {
-    background-color: rgba(255, 255, 255, 0.2); /* Üzerine gelindiğinde arka plan rengi değişir */
-}
-
-.hero {
-    background-image: url('https://via.placeholder.com/1200x400'); /* Bu kısmı değiştirebilirsiniz */
-    background-size: cover;
-    background-position: center;
-    height: 400px;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-.hero h1 {
-    font-size: 3em;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 .container {
@@ -82,4 +92,121 @@ nav a:hover {
 
 .product-card p {
     color: #666;
+}
+
+/* Fotoğraf banner alanı */
+.photo-banner {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    padding: 20px 0;
+    background-color: #f0f0f0;
+}
+
+/* Fotoğraf öğelerinin konteyneri */
+.photo-items {
+    display: flex;
+    animation: slide 30s linear infinite; /* Kayma animasyonu */
+}
+
+/* Tekil fotoğraf öğesi */
+.photo-item {
+    flex: 0 0 150px; /* Fotoğrafların başlangıç genişliği */
+    height: 300px;
+    transition: flex 0.3s ease; /* Kutu genişlemesi animasyonu */
+    overflow: hidden;
+}
+
+/* Fotoğrafın kutuya sığması */
+.photo-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Hover efektiyle kutu genişletme */
+.photo-item:hover {
+    flex: 0 0 300px; /* Kutu genişliği artar */
+}
+
+/* Sonsuz kayma animasyonu */
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* Animasyonu durdurma */
+.photo-banner.paused .photo-items {
+    animation-play-state: paused;
+}
+/* favorites kısmı burada */
+
+.favorites-container{
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.favorites-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
+}
+
+.favorites-card{
+    border: 10px solid black;
+}
+
+
+
+
+.vitrin-container {
+    padding: 40px;
+    background-color: #f4f4f4;
+}
+
+.vitrin-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.vitrin-card {
+    position: relative;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.vitrin-card img {
+    width: 100%;
+    border-radius: 8px;
+    height: auto;
+}
+
+.vitrin-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+.vitrin-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.vitrin-card:hover .vitrin-info {
+    opacity: 1;
 }
